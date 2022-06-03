@@ -1,28 +1,38 @@
-import React from 'react';
+import React from "react";
 import {
   Links,
   LiveReload,
+  LoaderFunction,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
   useCatch,
-} from 'remix';
-import type { MetaFunction } from 'remix';
-import { VStack, Heading, ChakraProvider, Text } from '@chakra-ui/react';
-import { withEmotionCache } from '@emotion/react';
+  useLoaderData,
+} from "remix";
+import type { MetaFunction } from "remix";
+import { VStack, Heading, ChakraProvider, Text } from "@chakra-ui/react";
+import { withEmotionCache } from "@emotion/react";
 
-import { ServerStyleContext, ClientStyleContext } from './context';
+import { ServerStyleContext, ClientStyleContext } from "./context";
+import { Layout } from "./Layout";
 
 export const meta: MetaFunction = () => {
-  return { title: 'Chakra UI Boilerplate' };
+  return { title: "Kernel" };
+};
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  return { path: url.pathname };
 };
 
 export default function App() {
+  const { path = '' } = useLoaderData();
   return (
     <Document>
       <ChakraProvider>
-        <Outlet />
+        <Layout path={path}>
+          <Outlet />
+        </Layout>
       </ChakraProvider>
     </Document>
   );
@@ -120,7 +130,7 @@ const Document = withEmotionCache(
           {serverSyleData?.map(({ key, ids, css }) => (
             <style
               key={key}
-              data-emotion={`${key} ${ids.join(' ')}`}
+              data-emotion={`${key} ${ids.join(" ")}`}
               dangerouslySetInnerHTML={{ __html: css }}
             />
           ))}
@@ -129,7 +139,7 @@ const Document = withEmotionCache(
           {children}
           <ScrollRestoration />
           <Scripts />
-          {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
+          {process.env.NODE_ENV === "development" ? <LiveReload /> : null}
         </body>
       </html>
     );
