@@ -16,6 +16,7 @@ import { withEmotionCache } from "@emotion/react";
 
 import { ServerStyleContext, ClientStyleContext } from "./context";
 import { Layout } from "./Layout";
+import { theme } from "./theme";
 
 export const meta: MetaFunction = () => {
   return { title: "Kernel" };
@@ -26,10 +27,10 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function App() {
-  const { path = '' } = useLoaderData();
+  const { path = "" } = useLoaderData();
   return (
     <Document>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <Layout path={path}>
           <Outlet />
         </Layout>

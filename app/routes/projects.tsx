@@ -1,7 +1,6 @@
-import type { LoaderFunction } from "remix";
-import { useLoaderData } from "remix";
-import { Link, Outlet } from "remix";
 import { Box } from "@chakra-ui/react";
+import type { LoaderFunction } from "remix";
+import { Outlet, useLoaderData } from "remix";
 import { ProjectSideBar } from "~/components/ProjectSideBar";
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -16,20 +15,9 @@ const ProjectsLayout = () => {
   return (
     <Box d="flex" height="100%" border="1px solid red">
       <ProjectSideBar developmentId={development} />
-      <Box>
-        <Box d="flex">
-          <Link to="/projects/project-base">Overview</Link>
-          <Link to="/projects/project-base/cost-system">Cost System</Link>
-          <Link to="/projects/project-base/lots">Lots</Link>
-          <Link to="/projects/project-base/plans">Plans</Link>
-          <Link to="/projects/project-base/options">Options</Link>
-        </Box>
-        <Box>
-          <Outlet />
-        </Box>
-      </Box>
+      <Outlet />
     </Box>
   );
 };
 
-export default ProjectsLayout;
+export default ProjectsLayout

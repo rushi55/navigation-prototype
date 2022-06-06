@@ -1,7 +1,22 @@
 /* eslint-disable react/jsx-key */
-import { Box, Link } from "@chakra-ui/react";
+import {
+  AddIcon,
+  PlusSquareIcon,
+  SearchIcon,
+  SettingsIcon,
+} from "@chakra-ui/icons";
+import {
+  Box,
+  IconButton,
+  Link,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
 import { Children } from "react";
 import { Link as RemixLink } from "remix";
+import { Logo } from "./Logo";
 
 type Props = {
   path?: string;
@@ -27,10 +42,12 @@ const NavLink = ({
     <Link
       to={route}
       as={RemixLink}
-      _hover={{ borderBottom: "1px solid #4299E1" }}
-      borderBottom={isFocusedLink ? "1px solid #4299E1" : ""}
+      _hover={{ borderBottom: "1px solid #2960F6" }}
+      borderBottom={isFocusedLink ? "1px solid #2960F6" : ""}
       mx={3}
-      color={isFocusedLink ? 'blue.400' : ''}
+      color={isFocusedLink ? "#2960F6" : "#394E65"}
+      fontSize="xl"
+      fontWeight="bold"
     >
       {name}
     </Link>
@@ -45,9 +62,11 @@ export const Navbar = ({ path }: Props) => {
       justifyContent="space-between"
       height="70px"
       px={3}
-      bgColor='whiteAlpha.800'
+      bgColor="whiteAlpha.800"
     >
-      <Box>Kernel</Box>
+      <Box>
+        <Logo />
+      </Box>
       <Box>
         {Children.toArray(
           links.map((l) => (
@@ -57,9 +76,29 @@ export const Navbar = ({ path }: Props) => {
         )}
       </Box>
       <Box d="flex">
-        <Box>Plus</Box>
-        <Box>Search</Box>
-        <Box>Avatar</Box>
+        <IconButton
+          aria-label="add item"
+          icon={<AddIcon />}
+          colorScheme="blue"
+          variant="ghost"
+          mx={1}
+        />
+        <IconButton aria-label="search icon" icon={<SearchIcon />} mx={1}>
+          Plus
+        </IconButton>
+
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            aria-label="Settings"
+            icon={<SettingsIcon />}
+            mx={1}
+          />
+          <MenuList>
+            <MenuItem>Profile</MenuItem>
+            <MenuItem>Settings</MenuItem>
+          </MenuList>
+        </Menu>
       </Box>
     </Box>
   );
