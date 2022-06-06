@@ -54,7 +54,7 @@ export const ProjectSideBar = ({
   >([]);
 
   return (
-    <Box width="15rem" p={2}>
+    <Box width="13rem" p={2}>
       <Heading size="md" mb={2} color="gray.400">
         Your projects
       </Heading>

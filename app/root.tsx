@@ -9,8 +9,8 @@ import {
   useCatch,
   useLoaderData,
 } from "remix";
-import type { MetaFunction ,
-  LoaderFunction} from "remix";
+import type { MetaFunction, LoaderFunction ,
+  LinksFunction} from "remix";
 import { VStack, Heading, ChakraProvider, Text } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
 
@@ -25,6 +25,19 @@ export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   return { path: url.pathname };
 };
+
+export const links: LinksFunction = () => [
+  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  {
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
+    crossOrigin: "anonymous",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Sora&display=swap",
+  },
+];
 
 export default function App() {
   const { path = "" } = useLoaderData();
@@ -113,7 +126,7 @@ const Document = withEmotionCache(
       });
       // reset cache to reapply global styles
       clientStyleData?.reset();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

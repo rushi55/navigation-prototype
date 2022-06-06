@@ -51,6 +51,8 @@ export const Navbar = ({ path }: Props) => {
       height="70px"
       px={3}
       bgColor="whiteAlpha.800"
+      borderBottom='1px solid #E2E8F0'
+      mb={1}
     >
       <Box>
         <Logo />

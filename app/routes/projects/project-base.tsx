@@ -53,7 +53,7 @@ const ProjectBaseLayout = () => {
           </Tab>
         </TabList>
       </Tabs>
-      <Box width="calc(100vw - 15rem)">
+      <Box width="calc(100vw - 13rem)" height='100%' bgColor='gray.100'>
         <Outlet />
       </Box>
     </Box>
