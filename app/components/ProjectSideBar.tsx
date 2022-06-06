@@ -91,40 +91,24 @@ export const ProjectSideBar = ({
         + Add Project
       </Button>
       <Spacer />
-      <Heading size="md" my={2} color="gray.400">
-        Navigation
-      </Heading>
-      {navigationLinks.map(({ name, route }) => {
-        return (
-          <NavigationLink
-            key="name"
-            name={name}
-            route={route}
-            developmentId={developmentId}
-          />
-        );
-      })}
-      {/* <Box>
-        <Link to={`/projects/project-base?development=${developmentId}`}>
-          <Button variant="solid" color="white" bgColor="#2960F6">
-            Project Base
-          </Button>
-        </Link>
-      </Box>
-      <Box>
-        <Link to={`/projects/contracts?development=${developmentId}`}>
-          <Button variant="ghost">Contracts</Button>
-        </Link>
-      </Box>
-      <Box>
-        <Button variant="ghost">Payments</Button>
-      </Box>
-      <Box>
-        <Button variant="ghost">Jobs</Button>
-      </Box>
-      <Box>
-        <Button variant="ghost">Reports</Button>
-      </Box> */}
+      {developmentId || developmentId === 0 ? (
+        <>
+          {" "}
+          <Heading size="md" my={2} color="gray.400">
+            Navigation
+          </Heading>
+          {navigationLinks.map(({ name, route }) => {
+            return (
+              <NavigationLink
+                key="name"
+                name={name}
+                route={route}
+                developmentId={developmentId}
+              />
+            );
+          })}
+        </>
+      ) : null}
     </Box>
   );
 };
