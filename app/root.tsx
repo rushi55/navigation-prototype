@@ -2,7 +2,6 @@ import React from "react";
 import {
   Links,
   LiveReload,
-  LoaderFunction,
   Meta,
   Outlet,
   Scripts,
@@ -10,7 +9,8 @@ import {
   useCatch,
   useLoaderData,
 } from "remix";
-import type { MetaFunction } from "remix";
+import type { MetaFunction ,
+  LoaderFunction} from "remix";
 import { VStack, Heading, ChakraProvider, Text } from "@chakra-ui/react";
 import { withEmotionCache } from "@emotion/react";
 
@@ -113,6 +113,7 @@ const Document = withEmotionCache(
       });
       // reset cache to reapply global styles
       clientStyleData?.reset();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

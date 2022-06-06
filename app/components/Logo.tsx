@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useNavigate } from "remix";
 
 const LogoStyles = styled.svg`
   width: 225px;
@@ -7,11 +8,14 @@ const LogoStyles = styled.svg`
 export const Logo = () => {
   const light = "#CCD1D3";
   const dark = "#011721";
+
+  const navigate = useNavigate();
   return (
     <LogoStyles
       height="100%"
       viewBox="80 50 450 60"
       style={{ minHeight: "40px" }}
+      onClick={() => navigate("/")}
     >
       <path
         d="M298.558 95.2698H289.651V92.8327H292.58L286.032 83.8868H281.922V92.8327H284.777V95.2698H275.986V92.8327H279.109V72.9653H275.986V70.5283H284.816V72.9653H281.922V81.4929H285.955L292.312 72.9308H289.384V70.4938H298.101V72.9308H295.284L288.167 82.4073L295.78 92.8371H298.558V95.2698Z"
