@@ -1,9 +1,5 @@
 /* eslint-disable react/jsx-key */
-import {
-  AddIcon,
-  SearchIcon,
-  SettingsIcon,
-} from "@chakra-ui/icons";
+import { AddIcon, SearchIcon, SettingsIcon } from "@chakra-ui/icons";
 import {
   Box,
   IconButton,
@@ -14,7 +10,7 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { Children } from "react";
-import { Link as RemixLink } from "remix";
+import { Link as RemixLink, useLocation } from "remix";
 import { Logo } from "./Logo";
 
 type Props = {
@@ -27,16 +23,9 @@ const links = [
   { name: "Vendors", route: "/vendors" },
 ];
 
-const NavLink = ({
-  route,
-  name,
-  currentPath,
-}: {
-  route: string;
-  name: string;
-  currentPath?: string;
-}) => {
-  const isFocusedLink = currentPath?.includes(route) || false;
+const NavLink = ({ route, name }: { route: string; name: string }) => {
+  const location = useLocation();
+  const isFocusedLink = location?.pathname?.includes(route) || false;
   return (
     <Link
       to={route}
@@ -70,7 +59,7 @@ export const Navbar = ({ path }: Props) => {
         {Children.toArray(
           links.map((l) => (
             // eslint-disable-next-line jsx-a11y/anchor-has-content
-            <NavLink name={l.name} route={l.route} currentPath={path} />
+            <NavLink name={l.name} route={l.route} />
           ))
         )}
       </Box>
