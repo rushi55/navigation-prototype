@@ -21,36 +21,35 @@ const ProjectBaseLayout = () => {
     <Box>
       <Tabs tabIndex={currentTabIndex}>
         <TabList>
-          <Tab>
-            <Link to={`/projects/project-base?development=${development}`}>
-              Overview
-            </Link>
+          <Tab
+            as={Link}
+            to={`/projects/project-base?development=${development}`}
+          >
+            Overview
           </Tab>
-          <Tab>
-            <Link
-              to={`/projects/project-base/cost-system?development=${development}`}
-            >
-              Cost System
-            </Link>
+          <Tab
+            as={Link}
+            to={`/projects/project-base/cost-system?development=${development}`}
+          >
+            Cost System
           </Tab>
-          <Tab>
-            <Link to={`/projects/project-base/lots?development=${development}`}>
-              Lots
-            </Link>
+          <Tab
+            as={Link}
+            to={`/projects/project-base/lots?development=${development}`}
+          >
+            Lots
           </Tab>
-          <Tab>
-            <Link
-              to={`/projects/project-base/plans?development=${development}`}
-            >
-              Plans
-            </Link>
+          <Tab
+            as={Link}
+            to={`/projects/project-base/plans?development=${development}`}
+          >
+            Plans
           </Tab>
-          <Tab>
-            <Link
-              to={`/projects/project-base/options?development=${development}`}
-            >
-              Options
-            </Link>
+          <Tab
+            as={Link}
+            to={`/projects/project-base/options?development=${development}`}
+          >
+            Options
           </Tab>
         </TabList>
       </Tabs>

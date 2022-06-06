@@ -28,8 +28,8 @@ const NavigationLink = ({
         color: "white",
         bgColor: NEW_BLUE,
         _hover: {
-            variant: 'ghost'
-        }
+          variant: "ghost",
+        },
       }
     : {};
 
@@ -49,9 +49,9 @@ export const ProjectSideBar = ({
 }: {
   developmentId?: number;
 }) => {
-  const [developments, setDevelopments] = useState([
-    { name: "Development 0", id: 0 },
-  ]);
+  const [developments, setDevelopments] = useState<
+    { id: number; name: string }[]
+  >([]);
 
   return (
     <Box width="15rem" p={2}>
@@ -59,23 +59,24 @@ export const ProjectSideBar = ({
         Your projects
       </Heading>
       {developments.map((d) => {
-          return (
-        <Link key={d.id} to={`/projects/project-base?development=${d.id}`}>
-          <Button
-            colorScheme="blue"
-            bgColor={developmentId === d.id ? "#F0F7FF" : "initial"}
-            color={developmentId === d.id ? "#2960F6" : "initial"}
-            variant={developmentId === d.id ? "solid" : "ghost"}
-            _hover={{
-              bgColor: "#2960F6",
-              color: "white",
-            }}
-            mb={2}
-          >
-            {d.name}
-          </Button>
-        </Link>
-      )})}
+        return (
+          <Link key={d.id} to={`/projects/project-base?development=${d.id}`}>
+            <Button
+              colorScheme="blue"
+              bgColor={developmentId === d.id ? "#F0F7FF" : "initial"}
+              color={developmentId === d.id ? "#2960F6" : "initial"}
+              variant={developmentId === d.id ? "solid" : "ghost"}
+              _hover={{
+                bgColor: "#2960F6",
+                color: "white",
+              }}
+              mb={2}
+            >
+              {d.name}
+            </Button>
+          </Link>
+        );
+      })}
 
       <Button
         onClick={() =>

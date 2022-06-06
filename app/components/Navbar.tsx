@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-key */
 import {
   AddIcon,
-  PlusSquareIcon,
   SearchIcon,
   SettingsIcon,
 } from "@chakra-ui/icons";
